@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">Образовательный комплекс «Детвора» — Павлодар</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        corporateNavy: '#0f172a',
+                        corporateSlate: '#1e293b',
+                        corporateAccent: '#2563eb',
+                        corporateLight: '#f8fafc',
+                        corporateBorder: '#334155'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between antialiased">
+
+    <div>
+        <!-- Top Utility Bar -->
+        <div class="bg-corporateNavy text-slate-300 text-xs py-2 px-4 sm:px-8 border-b border-slate-800">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+                <div class="flex items-center gap-6">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-phone text-blue-400"></i> +7 (747) 718-01-18</span>
+                    <span class="hidden md:flex items-center gap-2"><i class="fa-solid fa-envelope text-blue-400"></i> detvora90@mail.ru</span>
+                    <span class="hidden lg:flex items-center gap-2"><i class="fa-solid fa-location-dot text-blue-400"></i> <span data-i18n="address_top">г. Павлодар, ул. Камзина, 33</span></span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <!-- Language Switcher -->
+                    <div class="flex items-center bg-slate-800 rounded p-0.5 border border-slate-700 text-xs">
+                        <button onclick="setLang('ru')" id="btn-ru" class="px-2 py-0.5 rounded font-semibold bg-blue-600 text-white transition">RU</button>
+                        <button onclick="setLang('kz')" id="btn-kz" class="px-2 py-0.5 rounded font-semibold text-slate-300 hover:text-white transition">KZ</button>
+                    </div>
+                    <a href="https://api.whatsapp.com/send/?phone=77477180118&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%0A%0A%D0%9F%D0%B8%D1%88%D1%83+%D0%B8%D0%B7+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F+2%D0%93%D0%98%D0%A1.%0A%0A&type=phone_number&app_absent=0" target="_blank" class="bg-emerald-600 text-white px-3 py-1 rounded font-medium hover:bg-emerald-500 transition shadow-sm flex items-center gap-1.5">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Header & Navigation -->
+        <header class="bg-white sticky top-0 z-50 shadow-sm border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex justify-between items-center">
+                <!-- Logo & Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full overflow-hidden bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+                        <img src="27880323_167131100581360_4834544836260397056_n.jpg" alt="Логотип Детвора" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/0f172a/ffffff?text=Д'">
+                    </div>
+                    <div>
+                        <a href="#" class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 block leading-none">ДЕТВОРА</a>
+                        <span class="text-[10px] tracking-widest text-slate-500 uppercase block font-semibold mt-1" data-i18n="brand_subtitle">Образовательный комплекс</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-700">
+                    <a href="#" class="hover:text-blue-600 transition pb-1 border-b-2 border-blue-600" data-i18n="nav_home">Главная</a>
+                    <a href="#about" class="hover:text-blue-600 transition" data-i18n="nav_about">О центре</a>
+                    <a href="#programs" class="hover:text-blue-600 transition" data-i18n="nav_programs">Программы</a>
+                    <a href="#contacts" class="hover:text-blue-600 transition" data-i18n="nav_contacts">Контакты</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-slate-800 text-xl p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Drawer -->
+            <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-4 space-y-3 font-medium text-sm text-slate-800 shadow-lg">
+                <a href="#" class="block hover:text-blue-600 py-1" data-i18n="nav_home">Главная</a>
+                <a href="#about" class="block hover:text-blue-600 py-1" data-i18n="nav_about">О центре</a>
+                <a href="#programs" class="block hover:text-blue-600 py-1" data-i18n="nav_programs">Программы</a>
+                <a href="#contacts" class="block hover:text-blue-600 py-1" data-i18n="nav_contacts">Контакты</a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-pattern text-white py-16 sm:py-24 px-4 sm:px-8 border-b border-slate-800 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Main Hero Text -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-block bg-slate-800 border border-slate-700 text-blue-400 text-xs px-3.5 py-1.5 rounded font-semibold uppercase tracking-widest" data-i18n="hero_badge">
+                        Павлодар • Частный образовательный комплекс
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight" data-i18n="hero_title">
+                        Интеллектуальное и творческое развитие вашего ребенка
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl font-light" data-i18n="hero_desc">
+                        Современный образовательный центр полного дня: детский сад, начальная школа и развивающие студии с высокими стандартами обучения.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="https://api.whatsapp.com/send/?phone=77477180118&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%0A%0A%D0%9F%D0%B8%D1%88%D1%83+%D0%B8%D0%B7+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F+2%D0%93%D0%B8%D0%A1.%0A%0A&type=phone_number&app_absent=0" target="_blank" class="bg-blue-600 text-white font-semibold px-7 py-3.5 rounded-lg shadow hover:bg-blue-500 transition flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> <span data-i18n="btn_whatsapp">Написать в WhatsApp</span>
+                        </a>
+                        <a href="#programs" class="bg-slate-800 border border-slate-700 text-slate-200 font-semibold px-7 py-3.5 rounded-lg hover:bg-slate-700 transition" data-i18n="btn_programs">
+                            Наши программы
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero Card -->
+                <div class="lg:col-span-5 bg-corporateSlate rounded-xl p-6 border border-corporateBorder shadow-2xl space-y-6">
+                    <div class="border-b border-slate-700 pb-4">
+                        <h3 class="font-bold text-lg text-white" data-i18n="schedule_title">Режим работы комплекса</h3>
+                        <p class="text-xs text-slate-400 mt-1" data-i18n="schedule_time">Понедельник – Пятница: 08:00 – 18:30</p>
+                    </div>
+                    <div class="space-y-4 text-sm text-slate-300">
+                        <div class="flex justify-between items-center bg-slate-900/60 p-3 rounded border border-slate-800">
+                            <span data-i18n="prog_type_1">Детский сад</span>
+                            <span class="text-blue-400 font-semibold" data-i18n="full_day_badge">Полный день</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-900/60 p-3 rounded border border-slate-800">
+                            <span data-i18n="prog_type_2">Начальная школа (1-4 классы)</span>
+                            <span class="text-blue-400 font-semibold" data-i18n="full_day_badge">Полный день</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-900/60 p-3 rounded border border-slate-800">
+                            <span data-i18n="prog_type_3">Дополнительные секции</span>
+                            <span class="text-blue-400 font-semibold" data-i18n="dev_badge">Развитие</span>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/detvora.pvl" target="_blank" class="block text-center bg-pink-600/20 border border-pink-500/50 text-pink-300 py-2.5 rounded font-semibold text-sm hover:bg-pink-600 hover:text-white transition flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-instagram"></i> <span data-i18n="btn_instagram">Мы в Instagram (@detvora.pvl)</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-blue-600 font-bold uppercase tracking-widest text-xs" data-i18n="about_tag">О нас</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="about_title">Образовательная среда нового поколения</h2>
+                <p class="text-slate-600 text-base" data-i18n="about_desc">Мы формируем надежную базу знаний, критическое мышление и гармоничную социализацию в комфортных условиях.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-slate-900" data-i18n="feat_1_title">Безопасность</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed" data-i18n="feat_1_desc">Закрытая охраняемая территория, видеонаблюдение и строгий контроль доступа.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-users-rectangle"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-slate-900" data-i18n="feat_2_title">Малые группы</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed" data-i18n="feat_2_desc">Индивидуальный подход к каждому ребенку благодаря небольшой наполняемости классов и групп.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-slate-900" data-i18n="feat_3_title">Опытные педагоги</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed" data-i18n="feat_3_desc">Высокая квалификация преподавательского состава и регулярное совершенствование методик.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs" class="bg-slate-100 py-20 px-4 sm:px-8 border-y border-slate-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-blue-600 font-bold uppercase tracking-widest text-xs" data-i18n="prog_tag">Направления</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="prog_title">Образовательные программы</h2>
+                    <p class="text-slate-600 text-sm" data-i18n="prog_subtitle">Полный цикл развития от раннего возраста до окончания начальной школы.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-3">
+                        <div class="text-xs font-bold text-blue-600 uppercase">Этап 01</div>
+                        <h3 class="font-bold text-lg text-slate-900" data-i18n="card_1_title">Детский сад</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed" data-i18n="card_1_desc">Бережный уход, творчество, социализация и гармоничное развитие с ранних лет.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-3">
+                        <div class="text-xs font-bold text-blue-600 uppercase">Этап 02</div>
+                        <h3 class="font-bold text-lg text-slate-900" data-i18n="card_2_title">Начальная школа</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed" data-i18n="card_2_desc">Качественное образование по стандартам, углубленное изучение языков и наук.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-3">
+                        <div class="text-xs font-bold text-blue-600 uppercase">Этап 03</div>
+                        <h3 class="font-bold text-lg text-slate-900" data-i18n="card_3_title">Полный день и Студии</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed" data-i18n="card_3_desc">Пребывание полного дня, спорт, хореография и развивающие секции.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer / Contacts Section -->
+    <footer id="contacts" class="bg-corporateNavy text-white pt-16 pb-8 px-4 sm:px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-slate-800">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
+                        <img src="27880323_167131100581360_4834544836260397056_n.jpg" alt="Логотип Детвора" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/0f172a/ffffff?text=Д'">
+                    </div>
+                    <span class="font-extrabold text-lg tracking-tight">ДЕТВОРА</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed" data-i18n="footer_desc">
+                    Образовательный комплекс и центр развития в Павлодаре. Высокие стандарты воспитания и образования.
+                </p>
+                <!-- Social Media Buttons -->
+                <div class="flex items-center gap-3 pt-2">
+                    <a href="https://www.instagram.com/detvora.pvl" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-pink-400 hover:bg-pink-600 hover:text-white transition shadow">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://api.whatsapp.com/send/?phone=77477180118&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%0A%0A%D0%9F%D0%B8%D1%88%D1%83+%D0%B8%D0%B7+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F+2%D0%93%D0%B8%D0%A1.%0A%0A&type=phone_number&app_absent=0" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-emerald-400 hover:bg-emerald-600 hover:text-white transition shadow">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="space-y-3 text-sm text-slate-300">
+                <h4 class="font-bold text-white text-base" data-i18n="footer_contacts_title">Контакты</h4>
+                <p class="flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-blue-400"></i> <span data-i18n="address_top">г. Павлодар, ул. Камзина, 33</span></p>
+                <p class="flex items-center gap-2.5"><i class="fa-solid fa-phone text-blue-400"></i> +7 (747) 718-01-18</p>
+                <p class="flex items-center gap-2.5"><i class="fa-solid fa-envelope text-blue-400"></i> detvora90@mail.ru</p>
+            </div>
+            <div class="space-y-3">
+                <h4 class="font-bold text-white text-base" data-i18n="footer_hours_title">Режим работы</h4>
+                <p class="text-xs text-slate-300" data-i18n="schedule_time">Пн - Пт: 08:00 – 18:30</p>
+                <p class="text-xs text-slate-400" data-i18n="footer_weekend">Сб - Вс: Выходной</p>
+                <div class="pt-2 flex flex-col items-start gap-2">
+                    <a href="#" class="inline-block bg-blue-600 text-white px-4 py-2 rounded text-xs font-semibold hover:bg-blue-500 transition" data-i18n="btn_top">Наверх сайта</a>
+                    <a href="https://drive.google.com/drive/u/0/folders/1uolrEJg0c1MbvUTEnjkChkKFdne98lux" target="_blank" class="inline-block bg-slate-700 text-white px-4 py-2 rounded text-xs font-semibold hover:bg-slate-600 transition border border-slate-600">Аттестация</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-6 text-center text-xs text-slate-500" data-i18n="footer_copy">
+            © 2026 Образовательный комплекс «Детвора». Все права защищены.
+        </div>
+    </footer>
+
+    <!-- Localization Script & Mobile Menu -->
+    <script>
+        const translations = {
+            ru: {
+                page_title: "Образовательный комплекс «Детвора» — Павлодар",
+                brand_subtitle: "Образовательный комплекс",
+                address_top: "г. Павлодар, ул. Камзина, 33",
+                nav_home: "Главная",
+                nav_about: "О центре",
+                nav_programs: "Программы",
+                nav_contacts: "Контакты",
+                hero_badge: "Павлодар • Частный образовательный комплекс",
+                hero_title: "Интеллектуальное и творческое развитие вашего ребенка",
+                hero_desc: "Современный образовательный центр полного дня: детский сад, начальная школа и развивающие студии с высокими стандартами обучения.",
+                btn_whatsapp: "Написать в WhatsApp",
+                btn_programs: "Наши программы",
+                schedule_title: "Режим работы комплекса",
+                schedule_time: "Понедельник – Пятница: 08:00 – 18:30",
+                prog_type_1: "Детский сад",
+                prog_type_2: "Начальная школа (1-4 классы)",
+                prog_type_3: "Дополнительные секции",
+                full_day_badge: "Полный день",
+                dev_badge: "Развитие",
+                btn_instagram: "Мы в Instagram (@detvora.pvl)",
+                about_tag: "О нас",
+                about_title: "Образовательная среда нового поколения",
+                about_desc: "Мы формируем надежную базу знаний, критическое мышление и гармоничную социализацию в комфортных условиях.",
+                feat_1_title: "Безопасность",
+                feat_1_desc: "Закрытая охраняемая территория, видеонаблюдение и строгий контроль доступа.",
+                feat_2_title: "Малые группы",
+                feat_2_desc: "Индивидуальный подход к каждому ребенку благодаря небольшой наполняемости классов и групп.",
+                feat_3_title: "Опытные педагоги",
+                feat_3_desc: "Высокая квалификация преподавательского состава и регулярное совершенствование методик.",
+                prog_tag: "Направления",
+                prog_title: "Образовательные программы",
+                prog_subtitle: "Полный цикл развития от раннего возраста до окончания начальной школы.",
+                card_1_title: "Детский сад",
+                card_1_desc: "Бережный уход, творчество, социализация и гармоничное развитие с ранних лет.",
+                card_2_title: "Начальная школа",
+                card_2_desc: "Качественное образование по стандартам, углубленное изучение языков и наук.",
+                card_3_title: "Полный день и Студии",
+                card_3_desc: "Пребывание полного дня, спорт, хореография и развивающие секции.",
+                footer_desc: "Образовательный комплекс и центр развития в Павлодаре. Высокие стандарты воспитания и образования.",
+                footer_contacts_title: "Контакты",
+                footer_hours_title: "Режим работы",
+                footer_weekend: "Сб - Вс: Выходной",
+                btn_top: "Наверх сайта",
+                footer_copy: "© 2026 Образовательный комплекс «Детвора». Все права защищены."
+            },
+            kz: {
+                page_title: "«Детвора» білім беру кешені — Павлодар",
+                brand_subtitle: "Білім беру кешені",
+                address_top: "Павлодар қ., Камзин көш., 33",
+                nav_home: "Басты бет",
+                nav_about: "Орталық туралы",
+                nav_programs: "Бағдарламалар",
+                nav_contacts: "Байланыс",
+                hero_badge: "Павлодар • Жеке меншык білім беру кешені",
+                hero_title: "Балаңыздың зияткерлік және шығармашылық дамуы",
+                hero_desc: "Заманауи толық күндік білім беру орталығы: балабақша, бастауыш мектеп және дамыту студиялары.",
+                btn_whatsapp: "WhatsApp-қа жазу",
+                btn_programs: "Біздің бағдарламалар",
+                schedule_title: "Кешеннің жұмыс тәртібі",
+                schedule_time: "Дүйсенбі – Жұма: 08:00 – 18:30",
+                prog_type_1: "Балабақша",
+                prog_type_2: "Бастауыш мектеп (1-4 сыныптар)",
+                prog_type_3: "Қосымша үйірмелер",
+                full_day_badge: "Толық күн",
+                dev_badge: "Даму",
+                btn_instagram: "Біздің Instagram (@detvora.pvl)",
+                about_tag: "Біз туралы",
+                about_title: "Жаңа буынның білім беру ортасы",
+                about_desc: "Біз қолайлы жағдайда берік білім базасын, сыни тұрғыдан ойлауды қалыптастырамыз.",
+                feat_1_title: "Қауіпсіздік",
+                feat_1_desc: "Қорғалған аумақ, бейнебақылау және кіруді қатаң бақылау.",
+                feat_2_title: "Шағын топтар",
+                feat_2_desc: "Сыныптар мен топтардың шағын болуының арқасында әр балаға жеке көзқарас.",
+                feat_3_title: "Тәжірибелі ұстаздар",
+                feat_3_desc: "Педагогикалық құрамның жоғары біліктілігі және оқыту әдістемелері.",
+                prog_tag: "Бағыттар",
+                prog_title: "Білім беру бағдарламалары",
+                prog_subtitle: "Мектепке дейінгі жастан бастауыш мектепті аяқтағанға дейінгі толық цикл.",
+                card_1_title: "Балабақша",
+                card_1_desc: "Ұқыпты күтім, шығармашылық, әлеуметтендіру және үйлесімді даму.",
+                card_2_title: "Бастауыш мектеп",
+                card_2_desc: "Стандарттарға сай сапалы білім, тілдер мен ғылымдарды тереңдетіп оқыту.",
+                card_3_title: "Толық күн және Студиялар",
+                card_3_desc: "Толық күн болу, спорт, хореография және дамыту секциялары.",
+                footer_desc: "Павлодар қаласындағы білім беру кешені және даму орталығы.",
+                footer_contacts_title: "Байланыс",
+                footer_hours_title: "Жұмыс уақыты",
+                footer_weekend: "Сб - Вс: Демалыс",
+                btn_top: "Жоғарыға",
+                footer_copy: "© 2026 «Детвора» білім беру кешені. Барлық құқықтар қорғалған."
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            if (lang === 'kz') {
+                document.getElementById('btn-kz').className = "px-2 py-0.5 rounded font-semibold bg-blue-600 text-white transition";
+                document.getElementById('btn-ru').className = "px-2 py-0.5 rounded font-semibold text-slate-300 hover:text-white transition";
+            } else {
+                document.getElementById('btn-ru').className = "px-2 py-0.5 rounded font-semibold bg-blue-600 text-white transition";
+                document.getElementById('btn-kz').className = "px-2 py-0.5 rounded font-semibold text-slate-300 hover:text-white transition";
+            }
+            localStorage.setItem('detvora_lang', lang);
+        }
+
+        // Mobile menu toggle
+        const btn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
